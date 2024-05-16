@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurantfoodappflutter/common/background_container.dart';
 import 'package:restaurantfoodappflutter/common/custom_appbar.dart';
 import 'package:restaurantfoodappflutter/constants/constants.dart';
+import 'package:restaurantfoodappflutter/views/home/widget/home_tiles.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,11 +22,17 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: kSecondary,
         flexibleSpace: const CustomAppBar(),
       ),
-      body: const BackGroundContainer(
-        child: Center(
-          child: Text("Home"),
-        ),
-      ),
+      body: BackGroundContainer(
+          child: ListView(
+        physics: const NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.zero,
+        children: [
+          SizedBox(
+            height: 15.h,
+          ),
+          const HomeTiles()
+        ],
+      )),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:restaurantfoodappflutter/common/app_style.dart';
+import 'package:restaurantfoodappflutter/common/reusable_text.dart';
 import 'package:restaurantfoodappflutter/constants/constants.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -29,20 +31,12 @@ class CustomAppBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Kings Foods",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "1874 LaFoods Street Union City, NJ 07087",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.normal),
-                    ),
+                    ReusableText(
+                        text: "Kings Foods",
+                        style: appStyle(14, Colors.white, FontWeight.bold)),
+                    ReusableText(
+                        text: "1874 LaFoods Street Union City, NJ 07087",
+                        style: appStyle(12, Colors.white, FontWeight.normal)),
                   ],
                 ),
               ),
