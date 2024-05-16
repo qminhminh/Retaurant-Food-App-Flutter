@@ -23,5 +23,12 @@ double width = 428.w;
 
 const String appBaseUrl = "";
 
-
-
+List<String> orderList = [
+  "New Orders",
+  "Preparing",
+  "Ready",
+  "Picked Up",
+  "Self Deliveries",
+  "Delivered",
+  "Cancelled"
+];

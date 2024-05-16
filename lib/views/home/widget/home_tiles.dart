@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:restaurantfoodappflutter/common/home_tile.dart';
 import 'package:restaurantfoodappflutter/constants/constants.dart';
-import '../../../common/home_tile.dart';
+import 'package:restaurantfoodappflutter/views/food/food_list.dart';
 
 class HomeTiles extends StatelessWidget {
   const HomeTiles({
@@ -33,7 +35,11 @@ class HomeTiles extends StatelessWidget {
                 text: "Wallet",
                 iconPath: "assets/icons/wallet.svg"),
             HomeTile(
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const FoodList(),
+                      transition: Transition.fadeIn,
+                      duration: const Duration(milliseconds: 900));
+                },
                 text: "Foods",
                 iconPath: "assets/icons/french_fries.svg"),
             HomeTile(
