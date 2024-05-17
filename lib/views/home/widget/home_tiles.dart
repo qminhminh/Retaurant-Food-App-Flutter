@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurantfoodappflutter/common/home_tile.dart';
 import 'package:restaurantfoodappflutter/constants/constants.dart';
+import 'package:restaurantfoodappflutter/views/add_foods/add_foods.dart';
 import 'package:restaurantfoodappflutter/views/food/food_list.dart';
 
 class HomeTiles extends StatelessWidget {
@@ -27,7 +28,11 @@ class HomeTiles extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             HomeTile(
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const AddFoods(),
+                      transition: Transition.fadeIn,
+                      duration: const Duration(milliseconds: 900));
+                },
                 text: "Add Foods",
                 iconPath: "assets/icons/taco.svg"),
             HomeTile(

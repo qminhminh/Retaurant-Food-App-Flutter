@@ -1,4 +1,4 @@
-const categories = [
+List categories = [
   {
     "_id": "6537ece708ff5b7de97d0695",
     "title": "Fried Rice",

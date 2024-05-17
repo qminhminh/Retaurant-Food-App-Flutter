@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurantfoodappflutter/common/app_style.dart';
 import 'package:restaurantfoodappflutter/common/tab_widget.dart';
 import 'package:restaurantfoodappflutter/constants/constants.dart';
+import '../../../common/app_style.dart';
 
 class HomeTabs extends StatelessWidget {
   const HomeTabs({
