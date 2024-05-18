@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 String googleApiKey = '';
 
@@ -21,7 +22,7 @@ const kOffWhite = Color(0xffF3F4F8);
 double hieght = 926.h;
 double width = 428.w;
 
-const String appBaseUrl = "";
+const String appBaseUrl = "http://localhost:6013";
 
 List<String> orderList = [
   "New Orders",
@@ -32,3 +33,6 @@ List<String> orderList = [
   "Delivered",
   "Cancelled"
 ];
+
+Transition? kTransition = Transition.fadeIn;
+Duration? kDuration = const Duration(milliseconds: 900);

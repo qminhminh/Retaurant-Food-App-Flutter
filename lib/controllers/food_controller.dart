@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_final_fields, no_leading_underscores_for_local_identifiers, avoid_print
+// ignore_for_file: prefer_final_fields
 
 import 'dart:math';
 
@@ -12,7 +12,6 @@ class FoodController extends GetxController {
 
   set setCategory(String newValue) {
     _category = newValue;
-    print(category);
   }
 
   RxList<String> _types = <String>[].obs;
@@ -27,8 +26,6 @@ class FoodController extends GetxController {
     int min = 0;
     int max = 10000;
 
-    // ignore: unused_local_variable
-    final _random = Random();
     return min + Random().nextInt(max - min);
   }
 
