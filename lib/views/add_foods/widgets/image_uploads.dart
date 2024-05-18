@@ -189,16 +189,16 @@ class ImageUploads extends StatelessWidget {
                           btnWidth: width / 2.3,
                           btnRadius: 9,
                           onTap: () {
-                            if (controller.images.length > 1) {
-                              next();
-                            } else {
-                              Get.snackbar(
-                                  colorText: kLightWhite,
-                                  backgroundColor: kPrimary,
-                                  snackPosition: SnackPosition.TOP,
-                                  "Upload required images",
-                                  "Please upload at least 2 images");
-                            }
+                            next();
+                            // if (controller.images.length > 1) {
+                            //   next();
+                            // } else {
+                            //   Get.snackbar(
+                            //       colorText: kLightWhite,
+                            //       backgroundColor: kPrimary,
+                            //       snackPosition: SnackPosition.TOP,
+                            //       "Upload required images", "Please upload at least 2 images");
+                            // }
                           },
                         ),
                       ],

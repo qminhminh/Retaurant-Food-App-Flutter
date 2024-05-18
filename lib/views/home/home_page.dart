@@ -35,41 +35,40 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         flexibleSpace: const CustomAppBar(),
       ),
       body: BackGroundContainer(
-        child: ListView(
-          physics: const NeverScrollableScrollPhysics(),
-          padding: EdgeInsets.zero,
-          children: [
-            SizedBox(
-              height: 15.h,
+          child: ListView(
+        physics: const NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.zero,
+        children: [
+          SizedBox(
+            height: 15.h,
+          ),
+          const HomeTiles(),
+          SizedBox(
+            height: 15.h,
+          ),
+          HomeTabs(tabController: _tabController),
+          SizedBox(
+            height: 15.h,
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 12.w),
+            height: hieght * 0.7,
+            color: Colors.transparent,
+            child: TabBarView(
+              controller: _tabController,
+              children: const [
+                NewOrders(),
+                Preparing(),
+                ReadyOrders(),
+                PickedOrders(),
+                SelfDeliveries(),
+                DeliveredOrders(),
+                CancelledOrders()
+              ],
             ),
-            const HomeTiles(),
-            SizedBox(
-              height: 15.h,
-            ),
-            HomeTabs(tabController: _tabController),
-            SizedBox(
-              height: 15.h,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 12.w),
-              height: hieght * 0.7,
-              color: Colors.transparent,
-              child: TabBarView(
-                controller: _tabController,
-                children: const [
-                  NewOrders(),
-                  Preparing(),
-                  ReadyOrders(),
-                  PickedOrders(),
-                  SelfDeliveries(),
-                  DeliveredOrders(),
-                  CancelledOrders()
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
+          )
+        ],
+      )),
     );
   }
 }
