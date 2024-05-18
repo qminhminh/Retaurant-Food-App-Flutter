@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_collection_literals, prefer_interpolation_to_compose_strings, avoid_print
+// ignore_for_file: prefer_collection_literals, prefer_final_fields
 
 import 'dart:convert';
 
@@ -408,7 +408,6 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
                             );
                           } else {
                             String owner = box.read("userId");
-                            print("Owner Id" + owner);
 
                             RestaurantRequest model = RestaurantRequest(
                                 title: _title.text,

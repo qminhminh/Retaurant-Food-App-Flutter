@@ -19,59 +19,58 @@ class WaitingPage extends StatelessWidget {
 
     return Scaffold(
       body: BackGroundContainer(
-        color: Colors.white,
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(24.w, 200.h, 24.w, 0),
-          child: ListView(
-            children: [
-              Lottie.asset('assets/anime/delivery.json'),
-              ReusableText(
-                  text: restaurantController.restaurant!.title,
-                  style: appStyle(18, kPrimary, FontWeight.bold)),
-              SizedBox(
-                height: 10.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ReusableText(
-                      text:
-                          "Status: ${restaurantController.restaurant!.verification}",
-                      style: appStyle(14, kGray, FontWeight.bold)),
-                  GestureDetector(
-                    onTap: () {
-                      Get.to(
-                        () => const Login(),
-                      );
-                    },
-                    child: ReusableText(
-                        text: "Try Login",
-                        style: appStyle(14, kTertiary, FontWeight.bold)),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              SizedBox(
-                width: width * 0.8,
-                child: Text(
-                  restaurantController.restaurant!.verificationMessage,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 12,
-                    color: kGray,
-                  ),
-                  textAlign: TextAlign.justify,
+          color: Colors.white,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(24.w, 200.h, 24.w, 0),
+            child: ListView(
+              children: [
+                Lottie.asset('assets/anime/delivery.json'),
+                ReusableText(
+                    text: restaurantController.restaurant!.title,
+                    style: appStyle(18, kPrimary, FontWeight.bold)),
+                SizedBox(
+                  height: 10.h,
                 ),
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-            ],
-          ),
-        ),
-      ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ReusableText(
+                        text:
+                            "Status: ${restaurantController.restaurant!.verification}",
+                        style: appStyle(14, kGray, FontWeight.bold)),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(
+                          () => const Login(),
+                        );
+                      },
+                      child: ReusableText(
+                          text: "Try Login",
+                          style: appStyle(14, kTertiary, FontWeight.bold)),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                SizedBox(
+                  width: width * 0.8,
+                  child: Text(
+                    restaurantController.restaurant!.verificationMessage,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 12,
+                      color: kGray,
+                    ),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+              ],
+            ),
+          )),
     );
   }
 }

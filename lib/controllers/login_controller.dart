@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print
+// ignore_for_file: prefer_final_fields
 
 import 'dart:convert';
 
@@ -54,8 +54,7 @@ class LoginController extends GetxController {
         box.write('userId', data.id);
         box.write('accessToken', data.userToken);
         box.write('e-verification', data.verification);
-        print('userId: ' + data.id);
-        print('accessToken: ' + data.userToken);
+
         if (data.verification == false) {
           Get.snackbar(
             'Verification',
@@ -132,7 +131,6 @@ class LoginController extends GetxController {
         controller.restaurant = restaurantData;
 
         box.write("restaurantId", restaurantData.id);
-        print("restaurantId:  " + restaurantData.id);
         box.write("verification", restaurantData.verification);
 
         String data = restaurantResponseToJson(restaurantData);
