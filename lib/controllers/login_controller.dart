@@ -1,18 +1,26 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print
+
 import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:restaurantfoodappflutter/constants/constants.dart';
-import 'package:restaurantfoodappflutter/main.dart';
-import 'package:restaurantfoodappflutter/models/login_response.dart';
-import 'package:restaurantfoodappflutter/models/success_model.dart';
-import 'package:restaurantfoodappflutter/views/auth/login_page.dart';
 import 'package:http/http.dart' as http;
+import 'package:restaurantfoodappflutter/constants/constants.dart';
+import 'package:restaurantfoodappflutter/controllers/restaurant_controller.dart';
+import 'package:restaurantfoodappflutter/main.dart';
+import 'package:restaurantfoodappflutter/models/api_error.dart';
+import 'package:restaurantfoodappflutter/models/login_response.dart';
+import 'package:restaurantfoodappflutter/models/restaurant_response.dart';
+import 'package:restaurantfoodappflutter/views/auth/login_page.dart';
 import 'package:restaurantfoodappflutter/views/auth/restaurant_registaration.dart';
 import 'package:restaurantfoodappflutter/views/auth/verification_page.dart';
+import 'package:restaurantfoodappflutter/views/auth/waiting_page.dart';
+import 'package:restaurantfoodappflutter/views/home/home_page.dart';
 
 class LoginController extends GetxController {
+  final controller = Get.put(RestaurantController());
   final box = GetStorage();
+  RestaurantResponse? restaurant;
   RxBool _isLoading = false.obs;
 
   bool get isLoading => _isLoading.value;
@@ -46,7 +54,8 @@ class LoginController extends GetxController {
         box.write('userId', data.id);
         box.write('accessToken', data.userToken);
         box.write('e-verification', data.verification);
-
+        print('userId: ' + data.id);
+        print('accessToken: ' + data.userToken);
         if (data.verification == false) {
           Get.snackbar(
             'Verification',
@@ -68,11 +77,11 @@ class LoginController extends GetxController {
             duration: kDuration,
           );
         } else if (data.verification == true && data.userType == 'Vendor') {
-          getVendorInfo(data.userToken);
+          getVendorInfo(data.userToken, data.id);
         }
         isLoading = false;
       } else {
-        var data = successResponseFromJson(response.body);
+        var data = apiErrorFromJson(response.body);
         Get.snackbar(
           'Login Failed',
           data.message,
@@ -103,7 +112,62 @@ class LoginController extends GetxController {
     }
   }
 
-  void getVendorInfo(String accessToken) async {
-    print("getVendorInfo");
+  void getVendorInfo(String accessToken, String userId) async {
+    isLoading = true;
+
+    var url = Uri.parse('$appBaseUrl/api/restaurant/owner/profile/$userId');
+
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $accessToken'
+    };
+
+    try {
+      var response = await http.get(url, headers: headers);
+
+      if (response.statusCode == 200) {
+        RestaurantResponse restaurantData =
+            restaurantResponseFromJson(response.body);
+        restaurant = restaurantData;
+        controller.restaurant = restaurantData;
+
+        box.write("restaurantId", restaurantData.id);
+        print("restaurantId:  " + restaurantData.id);
+        box.write("verification", restaurantData.verification);
+
+        String data = restaurantResponseToJson(restaurantData);
+
+        box.write(restaurantData.id, data);
+
+        if (restaurantData.verification != "Verified") {
+          Get.offAll(() => const WaitingPage(),
+              transition: kTransition, duration: kDuration);
+        } else {
+          defaultHome = const HomePage();
+          Get.to(() => const HomePage(),
+              transition: kTransition, duration: kDuration);
+        }
+
+        isLoading = false;
+      } else {
+        var data = apiErrorFromJson(response.body);
+        Get.snackbar(
+          'Opps Failed',
+          data.message,
+          backgroundColor: kPrimary,
+          colorText: kLightWhite,
+        );
+        isLoading = false;
+      }
+    } catch (e) {
+      isLoading = false;
+
+      Get.snackbar(
+        'Login Failed',
+        e.toString(),
+        backgroundColor: kPrimary,
+        colorText: kLightWhite,
+      );
+    }
   }
 }

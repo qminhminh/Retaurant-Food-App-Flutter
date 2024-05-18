@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_collection_literals
+// ignore_for_file: prefer_collection_literals, prefer_interpolation_to_compose_strings, avoid_print
 
 import 'dart:convert';
 
@@ -13,7 +13,9 @@ import 'package:restaurantfoodappflutter/common/background_container.dart';
 import 'package:restaurantfoodappflutter/common/custom_button.dart';
 import 'package:restaurantfoodappflutter/common/reusable_text.dart';
 import 'package:restaurantfoodappflutter/constants/constants.dart';
+import 'package:restaurantfoodappflutter/controllers/restaurant_controller.dart';
 import 'package:restaurantfoodappflutter/controllers/uploader_controller.dart';
+import 'package:restaurantfoodappflutter/models/restaurant_request.dart';
 import 'package:restaurantfoodappflutter/views/auth/widgets/email_textfield.dart';
 import 'package:http/http.dart' as http;
 import 'package:restaurantfoodappflutter/views/auth/widgets/map_btn.dart';
@@ -156,6 +158,7 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
   @override
   Widget build(BuildContext context) {
     final uploader = Get.put(UploaderController());
+    final controller = Get.put(RestaurantController());
     return Scaffold(
         backgroundColor: kPrimary,
         appBar: AppBar(
@@ -390,7 +393,42 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
                       CustomButton(
                         text: "A D D   R E S T A U R A N T",
                         btnHieght: 35.h,
-                        onTap: () {},
+                        onTap: () {
+                          if (_time.text.isEmpty ||
+                              _title.text.isEmpty ||
+                              _postalCode.text.isEmpty ||
+                              _searchController.text.isEmpty ||
+                              uploader.logoUrl.isEmpty ||
+                              uploader.coverUrl.isEmpty) {
+                            Get.snackbar(
+                              colorText: kLightWhite,
+                              backgroundColor: kPrimary,
+                              "Error",
+                              "All fields are required",
+                            );
+                          } else {
+                            String owner = box.read("userId");
+                            print("Owner Id" + owner);
+
+                            RestaurantRequest model = RestaurantRequest(
+                                title: _title.text,
+                                time: _time.text,
+                                owner: owner,
+                                code: _postalCode.text,
+                                logoUrl: uploader.logoUrl,
+                                imageUrl: uploader.coverUrl,
+                                coords: Coords(
+                                    id: controller.generateId(),
+                                    latitude: _selectedLocation!.latitude,
+                                    longitude: _selectedLocation!.longitude,
+                                    address: _searchController.text,
+                                    title: _title.text));
+
+                            String data = restaurantRequestToJson(model);
+
+                            controller.restaurantRegistration(data);
+                          }
+                        },
                       )
                     ],
                   ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:restaurantfoodappflutter/constants/constants.dart';
 
 class ReadyOrders extends StatelessWidget {
   const ReadyOrders({super.key});
@@ -9,7 +10,7 @@ class ReadyOrders extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
-        color: Colors.blue,
+        color: kGrayLight.withOpacity(0.3),
       ),
     );
   }

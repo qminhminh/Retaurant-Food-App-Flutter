@@ -25,6 +25,10 @@ class UploaderController extends GetxController {
     _images.add(newValue);
   }
 
+  void resetList() {
+    _images.clear();
+  }
+
   RxString _imageOneUrl = ''.obs;
   RxString _imageTwoUrl = ''.obs;
   RxString _imageThreeUrl = ''.obs;

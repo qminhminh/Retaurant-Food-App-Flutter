@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:restaurantfoodappflutter/constants/constants.dart';
 
 class DeliveredOrders extends StatelessWidget {
   const DeliveredOrders({super.key});
@@ -9,7 +10,7 @@ class DeliveredOrders extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
-        color: Colors.green,
+        color: kGrayLight.withOpacity(0.3),
       ),
     );
   }

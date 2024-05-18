@@ -7,7 +7,7 @@ import 'package:restaurantfoodappflutter/common/custom_textfield.dart';
 import 'package:restaurantfoodappflutter/common/reusable_text.dart';
 import 'package:restaurantfoodappflutter/constants/constants.dart';
 import 'package:restaurantfoodappflutter/controllers/food_controller.dart';
-import 'package:restaurantfoodappflutter/models/additives_model.dart';
+import 'package:restaurantfoodappflutter/models/add_foods_models.dart';
 
 class AdditivesInfo extends StatelessWidget {
   const AdditivesInfo(
@@ -47,7 +47,7 @@ class AdditivesInfo extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: hieght * 0.22,
+              height: hieght * 0.3,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 12.w),
                 child: Column(

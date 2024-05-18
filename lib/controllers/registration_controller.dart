@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_final_fields
-
 import 'package:get/get.dart';
-import 'package:restaurantfoodappflutter/constants/constants.dart';
 import 'package:http/http.dart' as http;
+import 'package:restaurantfoodappflutter/constants/constants.dart';
 import 'package:restaurantfoodappflutter/models/success_model.dart';
 import 'package:restaurantfoodappflutter/views/auth/login_page.dart';
 

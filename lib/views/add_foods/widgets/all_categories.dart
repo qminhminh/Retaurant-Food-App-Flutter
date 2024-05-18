@@ -4,9 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurantfoodappflutter/common/app_style.dart';
 import 'package:restaurantfoodappflutter/common/reusable_text.dart';
+import 'package:restaurantfoodappflutter/common/shimmers/foodlist_shimmer.dart';
 import 'package:restaurantfoodappflutter/constants/constants.dart';
-import 'package:restaurantfoodappflutter/constants/uidata.dart';
 import 'package:restaurantfoodappflutter/controllers/food_controller.dart';
+import 'package:restaurantfoodappflutter/hooks/category_list_hook.dart';
 
 class ChooseCategory extends HookWidget {
   const ChooseCategory({
@@ -18,6 +19,20 @@ class ChooseCategory extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(FoodController());
+    final hookResults = fetchCategories();
+    final categories = hookResults.data;
+    final isLoading = hookResults.isLoading;
+    final error = hookResults.error;
+
+    if (isLoading) {
+      return const FoodsListShimmer();
+    }
+    if (error != null) {
+      return Center(
+        child: Text(error.toString()),
+      );
+    }
+
     return SizedBox(
         height: hieght,
         child: ListView(
@@ -40,21 +55,21 @@ class ChooseCategory extends HookWidget {
             SizedBox(
               height: hieght * 0.8,
               child: ListView.builder(
-                  itemCount: categories.length,
+                  itemCount: categories!.length,
                   itemBuilder: (context, i) {
                     final category = categories[i];
                     return ListTile(
                       onTap: () {
-                        controller.setCategory = category['_id'];
+                        controller.setCategory = category.id;
                         next();
                       },
                       leading: CircleAvatar(
                           radius: 18.r,
                           backgroundColor: kPrimary,
-                          child: Image.network(category['imageUrl'],
+                          child: Image.network(category.imageUrl,
                               fit: BoxFit.contain)),
                       title: ReusableText(
-                          text: category['title'],
+                          text: category.title,
                           style: appStyle(12, kGray, FontWeight.normal)),
                       trailing: Icon(
                         Icons.arrow_forward_ios,

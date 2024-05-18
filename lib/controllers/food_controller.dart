@@ -3,9 +3,23 @@
 import 'dart:math';
 
 import 'package:get/get.dart';
-import 'package:restaurantfoodappflutter/models/additives_model.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:restaurantfoodappflutter/constants/constants.dart';
+import 'package:restaurantfoodappflutter/models/add_foods_models.dart';
+import 'package:http/http.dart' as http;
+import 'package:restaurantfoodappflutter/models/api_error.dart';
+import 'package:restaurantfoodappflutter/models/success_model.dart';
+import 'package:restaurantfoodappflutter/views/home/home_page.dart';
 
 class FoodController extends GetxController {
+  final box = GetStorage();
+
+  RxBool _isLoading = false.obs;
+
+  bool get isLoading => _isLoading.value;
+
+  set isLoading(bool value) => _isLoading.value = value;
+
   String _category = '';
 
   String get category => _category;
@@ -31,7 +45,7 @@ class FoodController extends GetxController {
 
   RxList<Additive> _additivesList = <Additive>[].obs;
 
-  RxList<Additive> get additivesList => _additivesList;
+  List<Additive> get additivesList => _additivesList;
 
   set addAdditive(Additive newValue) {
     _additivesList.add(newValue);
@@ -47,5 +61,49 @@ class FoodController extends GetxController {
 
   set setTags(String newValue) {
     _tags.add(newValue);
+  }
+
+  void addFoodsFunction(String data) async {
+    String accessToken = box.read('accessToken');
+    isLoading = true;
+
+    Uri url = Uri.parse('$appBaseUrl/api/foods');
+
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $accessToken',
+    };
+
+    try {
+      var response = await http.post(url, headers: headers, body: data);
+
+      if (response.statusCode == 201) {
+        var data = successResponseFromJson(response.body);
+        isLoading = false;
+        Get.snackbar(
+            colorText: kLightWhite,
+            backgroundColor: kPrimary,
+            'Success',
+            data.message);
+        Get.to(() => const HomePage(),
+            transition: kTransition, duration: kDuration);
+      } else {
+        isLoading = false;
+        var data = apiErrorFromJson(response.body);
+        Get.snackbar(
+            colorText: kLightWhite,
+            backgroundColor: kPrimary,
+            'Failed to upload',
+            data.message);
+      }
+    } catch (e) {
+      isLoading = false;
+      var data = apiErrorFromJson(e.toString());
+      Get.snackbar(
+          colorText: kLightWhite,
+          backgroundColor: kPrimary,
+          'Failed to upload',
+          data.message);
+    }
   }
 }

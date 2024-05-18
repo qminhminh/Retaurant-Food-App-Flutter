@@ -28,10 +28,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kSecondary,
+      backgroundColor: kPrimary,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: kSecondary,
+        backgroundColor: kPrimary,
         flexibleSpace: const CustomAppBar(),
       ),
       body: BackGroundContainer(

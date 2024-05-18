@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:restaurantfoodappflutter/common/app_style.dart';
 import 'package:restaurantfoodappflutter/common/background_container.dart';
 import 'package:restaurantfoodappflutter/common/reusable_text.dart';
 import 'package:restaurantfoodappflutter/constants/constants.dart';
+import 'package:restaurantfoodappflutter/controllers/food_controller.dart';
+import 'package:restaurantfoodappflutter/controllers/restaurant_controller.dart';
+import 'package:restaurantfoodappflutter/controllers/uploader_controller.dart';
+import 'package:restaurantfoodappflutter/models/add_foods_models.dart';
 import 'package:restaurantfoodappflutter/views/add_foods/widgets/additives_info.dart';
 import 'package:restaurantfoodappflutter/views/add_foods/widgets/all_categories.dart';
 import 'package:restaurantfoodappflutter/views/add_foods/widgets/food_info.dart';
@@ -39,6 +44,9 @@ class _AddFoodsState extends State<AddFoods> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(FoodController());
+    final images = Get.put(UploaderController());
+    final restaurant = Get.put(RestaurantController());
     return Scaffold(
       backgroundColor: kSecondary,
       appBar: AppBar(
@@ -113,7 +121,42 @@ class _AddFoodsState extends State<AddFoods> {
                           duration: const Duration(milliseconds: 500),
                           curve: Curves.easeIn);
                     },
-                    submit: () {},
+                    submit: () {
+                      if (title.text.isEmpty ||
+                          description.text.isEmpty ||
+                          price.text.isEmpty ||
+                          preparation.text.isEmpty ||
+                          controller.types.isEmpty ||
+                          controller.tags.isEmpty ||
+                          controller.additivesList.isEmpty) {
+                        Get.snackbar(
+                            colorText: kLightWhite,
+                            backgroundColor: kPrimary,
+                            "You should fill all the fields",
+                            "All fields are required to upload food items to the app");
+                      } else {
+                        AddFoodsModel foodItem = AddFoodsModel(
+                            title: title.text,
+                            foodTags: controller.tags,
+                            foodType: controller.types,
+                            code: restaurant.restaurant!.code,
+                            category: controller.category,
+                            time: preparation.text,
+                            isAvailable: true,
+                            restaurant: restaurant.restaurant!.id,
+                            description: description.text,
+                            price: double.parse(price.text),
+                            additives: controller.additivesList,
+                            imageUrl: images.images);
+
+                        String data = addFoodsModelToJson(foodItem);
+                        controller.addFoodsFunction(data);
+                        images.resetList();
+                        controller.additivesList.clear();
+                        controller.tags.clear();
+                        controller.types.clear();
+                      }
+                    },
                   )
                 ],
               ),

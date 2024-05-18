@@ -3,14 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurantfoodappflutter/common/app_style.dart';
 import 'package:restaurantfoodappflutter/common/reusable_text.dart';
 import 'package:restaurantfoodappflutter/constants/constants.dart';
+import 'package:restaurantfoodappflutter/models/foods_model.dart';
 
 class FoodTile extends StatelessWidget {
-  const FoodTile({
+  FoodTile({
     super.key,
     required this.food,
   });
 
-  final Map<String, dynamic> food;
+  FoodsModel food;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class FoodTile extends StatelessWidget {
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(12.r),
                         child:
-                            Image.network(food['imageUrl'], fit: BoxFit.cover)),
+                            Image.network(food.imageUrl[0], fit: BoxFit.cover)),
                   ),
                 ),
                 SizedBox(width: 12.w),
@@ -43,19 +44,19 @@ class FoodTile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ReusableText(
-                        text: food['title'],
+                        text: food.title,
                         style: appStyle(11, kDark, FontWeight.w500)),
                     ReusableText(
-                        text: "Delivery time:  ${food['time']}",
+                        text: "Delivery time:  ${food.time}",
                         style: appStyle(9, kGray, FontWeight.w500)),
                     SizedBox(
                       height: 16.h,
                       width: width * 0.7,
                       child: ListView.builder(
-                          itemCount: food['additives'].length,
+                          itemCount: food.additives.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, i) {
-                            String title = food['additives'][i]['title'];
+                            String title = food.additives[i].title;
                             return Container(
                               margin: EdgeInsets.only(right: 5.w),
                               decoration: BoxDecoration(
@@ -90,7 +91,7 @@ class FoodTile extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12.r)),
                   child: Center(
                       child: ReusableText(
-                          text: "\$${food['price'].toStringAsFixed(2)}",
+                          text: "\$${food.price.toStringAsFixed(2)}",
                           style: appStyle(12, kLightWhite, FontWeight.bold))),
                 ))
           ],
