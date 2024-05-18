@@ -5,6 +5,13 @@ class RestaurantRegistration extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Restaurant Registration'),
+      ),
+      body: const Center(
+        child: Text('Restaurant Registration'),
+      ),
+    );
   }
 }

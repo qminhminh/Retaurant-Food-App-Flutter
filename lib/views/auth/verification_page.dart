@@ -57,14 +57,15 @@ class _VerificationPageState extends State<VerificationPage> {
               outlineBorderRadius: 15,
               style: const TextStyle(fontSize: 17),
               onCompleted: (pin) {
-                controller.verifyEmail();
+                controller.setCode(pin);
+                controller.verifyEmail(pin);
               }),
           SizedBox(
             height: 20.h,
           ),
           CustomButton(
             onTap: () {
-              controller.verifyEmail();
+              controller.verifyEmail(controller.code);
             },
             btnColor: kPrimary,
             text: "Verify Account",

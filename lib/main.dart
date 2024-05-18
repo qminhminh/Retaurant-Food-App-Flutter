@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:restaurantfoodappflutter/firebase_options.dart';
-import 'package:restaurantfoodappflutter/views/home/home_page.dart';
+import 'package:restaurantfoodappflutter/views/auth/login_page.dart';
 
-Widget defaultHome = const HomePage();
+Widget defaultHome = const Login();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

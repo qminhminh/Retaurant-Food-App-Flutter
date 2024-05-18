@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_final_fields
-
 import 'package:get/get.dart';
 import 'package:restaurantfoodappflutter/constants/constants.dart';
 import 'package:http/http.dart' as http;
