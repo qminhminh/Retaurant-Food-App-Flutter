@@ -56,8 +56,9 @@ class OrderTile extends StatelessWidget {
             height: 84,
             width: width,
             decoration: BoxDecoration(
-                color: kLightWhite,
-                borderRadius: BorderRadius.all(Radius.circular(9.r))),
+              color: kLightWhite,
+              borderRadius: BorderRadius.all(Radius.circular(9.r)),
+            ),
             child: Container(
               padding: const EdgeInsets.all(4),
               child: Row(
@@ -84,8 +85,9 @@ class OrderTile extends StatelessWidget {
                         height: 6.h,
                       ),
                       ReusableText(
-                          text: order.orderItems[0].foodId.title,
-                          style: appStyle(10, kGray, FontWeight.w500)),
+                        text: order.orderItems[0].foodId.title,
+                        style: appStyle(10, kGray, FontWeight.w500),
+                      ),
                       OrderRowText(text: "🍲 Order : ${order.id}"),
                       OrderRowText(
                           text: "🏠 ${order.deliveryAddress.addressLine1}"),
@@ -96,21 +98,25 @@ class OrderTile extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 3.w),
                             margin: EdgeInsets.only(right: 2.w),
                             decoration: BoxDecoration(
-                                color: const Color(0xFFFFFFFF),
-                                borderRadius: BorderRadius.circular(10)),
+                              color: const Color(0xFFFFFFFF),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                             child: ReusableText(
-                                text: "\$ ${order.deliveryFee}",
-                                style: appStyle(9, kGray, FontWeight.w400)),
+                              text: "\$ ${order.deliveryFee}",
+                              style: appStyle(9, kGray, FontWeight.w400),
+                            ),
                           ),
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 3.w),
                             margin: EdgeInsets.only(right: 2.w),
                             decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10)),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                             child: ReusableText(
-                                text: "⏰ 25 min",
-                                style: appStyle(9, kGray, FontWeight.w400)),
+                              text: "⏰ 25 min",
+                              style: appStyle(9, kGray, FontWeight.w400),
+                            ),
                           ),
                         ],
                       ),
@@ -121,17 +127,18 @@ class OrderTile extends StatelessWidget {
             ),
           ),
           Positioned(
-              right: 10.h,
-              top: 6.h,
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(10.r)),
-                child: SizedBox(
-                  width: 19.h,
-                  height: 19.h,
-                  child: Image.network(order.restaurantId.logoUrl,
-                      fit: BoxFit.cover),
-                ),
-              ))
+            right: 10.h,
+            top: 6.h,
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(10.r)),
+              child: SizedBox(
+                width: 19.h,
+                height: 19.h,
+                child: Image.network(order.restaurantId.logoUrl,
+                    fit: BoxFit.cover),
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -150,8 +157,9 @@ class OrderRowText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: width / 1.6,
-        child: ReusableText(
-            text: text, style: appStyle(9, kGray, FontWeight.w400)));
+      width: width / 1.6,
+      child:
+          ReusableText(text: text, style: appStyle(9, kGray, FontWeight.w400)),
+    );
   }
 }

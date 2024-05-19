@@ -35,6 +35,6 @@ class CustomButton extends StatelessWidget {
             child: ReusableText(
                 text: text, style: appStyle(12, kLightWhite, FontWeight.w500)),
           ),
-        ));
+        ),);
   }
 }

@@ -70,9 +70,9 @@ class FoodTile extends StatelessWidget {
                                   padding:
                                       EdgeInsets.symmetric(horizontal: 4.w),
                                   child: ReusableText(
-                                      text: title,
-                                      style:
-                                          appStyle(8, kGray, FontWeight.w400)),
+                                    text: title,
+                                    style: appStyle(8, kGray, FontWeight.w400),
+                                  ),
                                 ),
                               ),
                             );
@@ -83,19 +83,21 @@ class FoodTile extends StatelessWidget {
               ],
             ),
             Positioned(
-                right: 5.w,
-                top: 5.h,
-                child: Container(
-                  height: 19.h,
-                  width: 60.w,
-                  decoration: BoxDecoration(
-                      color: kPrimary,
-                      borderRadius: BorderRadius.circular(12.r)),
-                  child: Center(
-                      child: ReusableText(
-                          text: "\$${food.price.toStringAsFixed(2)}",
-                          style: appStyle(12, kLightWhite, FontWeight.bold))),
-                ))
+              right: 5.w,
+              top: 5.h,
+              child: Container(
+                height: 19.h,
+                width: 60.w,
+                decoration: BoxDecoration(
+                    color: kPrimary, borderRadius: BorderRadius.circular(12.r)),
+                child: Center(
+                  child: ReusableText(
+                    text: "\$${food.price.toStringAsFixed(2)}",
+                    style: appStyle(12, kLightWhite, FontWeight.bold),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),

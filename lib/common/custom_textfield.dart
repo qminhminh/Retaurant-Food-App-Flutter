@@ -35,35 +35,36 @@ class CustomTextField extends StatelessWidget {
         return null;
       },
       decoration: InputDecoration(
-          hintText: hintText,
-          prefixIcon: prefixIcon,
-          isDense: true,
-          contentPadding: maxLines == 1 ? EdgeInsets.zero : EdgeInsets.all(6.r),
-          hintStyle: appStyle(12, kGray, FontWeight.normal),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: kRed, width: 0.5.w),
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: kPrimary, width: 0.5.w),
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: kRed, width: 0.5.w),
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: kGray, width: 0.5.w),
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: kGray, width: 0.5.w),
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          border: OutlineInputBorder(
-            borderSide: BorderSide(color: kGray, width: 0.5.w),
-            borderRadius: BorderRadius.circular(12.r),
-          )),
+        hintText: hintText,
+        prefixIcon: prefixIcon,
+        isDense: true,
+        contentPadding: maxLines == 1 ? EdgeInsets.zero : EdgeInsets.all(6.r),
+        hintStyle: appStyle(12, kGray, FontWeight.normal),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: kRed, width: 0.5.w),
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: kPrimary, width: 0.5.w),
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: kRed, width: 0.5.w),
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: kGray, width: 0.5.w),
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: kGray, width: 0.5.w),
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: kGray, width: 0.5.w),
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+      ),
     );
   }
 }

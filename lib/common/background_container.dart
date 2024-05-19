@@ -19,14 +19,15 @@ class BackGroundContainer extends StatelessWidget {
         width: width,
         height: hieght,
         decoration: BoxDecoration(
-            color: color ?? kLightWhite,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.r),
-              topRight: Radius.circular(20.r),
-            ),
-            image: const DecorationImage(
-                image: AssetImage('assets/images/restaurant_bk.png'),
-                fit: BoxFit.cover)),
+          color: color ?? kLightWhite,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.r),
+            topRight: Radius.circular(20.r),
+          ),
+          image: const DecorationImage(
+              image: AssetImage('assets/images/restaurant_bk.png'),
+              fit: BoxFit.cover),
+        ),
         child: child,
       ),
     );

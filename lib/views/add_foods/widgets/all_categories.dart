@@ -34,52 +34,53 @@ class ChooseCategory extends HookWidget {
     }
 
     return SizedBox(
-        height: hieght,
-        child: ListView(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 16.w, top: 12.h, bottom: 12.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ReusableText(
-                      text: "Pick Category",
-                      style: appStyle(16, kGray, FontWeight.w600)),
-                  ReusableText(
-                      text:
-                          "You are to pick a category to continue adding a food item",
-                      style: appStyle(11, kGray, FontWeight.normal)),
-                ],
-              ),
+      height: hieght,
+      child: ListView(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: 16.w, top: 12.h, bottom: 12.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ReusableText(
+                    text: "Pick Category",
+                    style: appStyle(16, kGray, FontWeight.w600)),
+                ReusableText(
+                    text:
+                        "You are to pick a category to continue adding a food item",
+                    style: appStyle(11, kGray, FontWeight.normal)),
+              ],
             ),
-            SizedBox(
-              height: hieght * 0.8,
-              child: ListView.builder(
-                  itemCount: categories!.length,
-                  itemBuilder: (context, i) {
-                    final category = categories[i];
-                    return ListTile(
-                      onTap: () {
-                        controller.setCategory = category.id;
-                        next();
-                      },
-                      leading: CircleAvatar(
-                          radius: 18.r,
-                          backgroundColor: kPrimary,
-                          child: Image.network(category.imageUrl,
-                              fit: BoxFit.contain)),
-                      title: ReusableText(
-                          text: category.title,
-                          style: appStyle(12, kGray, FontWeight.normal)),
-                      trailing: Icon(
-                        Icons.arrow_forward_ios,
-                        color: kGray,
-                        size: 15.sp,
-                      ),
-                    );
-                  }),
-            )
-          ],
-        ));
+          ),
+          SizedBox(
+            height: hieght * 0.8,
+            child: ListView.builder(
+                itemCount: categories!.length,
+                itemBuilder: (context, i) {
+                  final category = categories[i];
+                  return ListTile(
+                    onTap: () {
+                      controller.setCategory = category.id;
+                      next();
+                    },
+                    leading: CircleAvatar(
+                        radius: 18.r,
+                        backgroundColor: kPrimary,
+                        child: Image.network(category.imageUrl,
+                            fit: BoxFit.contain)),
+                    title: ReusableText(
+                        text: category.title,
+                        style: appStyle(12, kGray, FontWeight.normal)),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: kGray,
+                      size: 15.sp,
+                    ),
+                  );
+                }),
+          )
+        ],
+      ),
+    );
   }
 }

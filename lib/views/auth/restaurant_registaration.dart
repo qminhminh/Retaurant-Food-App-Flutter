@@ -160,84 +160,82 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
     final uploader = Get.put(UploaderController());
     final controller = Get.put(RestaurantController());
     return Scaffold(
+      backgroundColor: kPrimary,
+      appBar: AppBar(
         backgroundColor: kPrimary,
-        appBar: AppBar(
-          backgroundColor: kPrimary,
-          automaticallyImplyLeading: false,
-          centerTitle: false,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              MapBtn(
-                  text: "Back",
-                  onTap: () {
-                    _pageController.previousPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeIn);
-                  }),
-              ReusableText(
-                  text: "Register Restaurant",
-                  style: appStyle(13, kLightWhite, FontWeight.w600)),
-              MapBtn(
-                  text: "Next",
-                  onTap: () {
-                    _pageController.nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeIn);
-                  }),
-            ],
-          ),
+        automaticallyImplyLeading: false,
+        centerTitle: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            MapBtn(
+                text: "Back",
+                onTap: () {
+                  _pageController.previousPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn);
+                }),
+            ReusableText(
+                text: "Register Restaurant",
+                style: appStyle(13, kLightWhite, FontWeight.w600)),
+            MapBtn(
+                text: "Next",
+                onTap: () {
+                  _pageController.nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn);
+                }),
+          ],
         ),
-        body: SizedBox(
-          height: hieght,
-          width: width,
-          child: PageView(
-            controller: _pageController,
-            physics: const NeverScrollableScrollPhysics(),
-            children: [
-              BackGroundContainer(
-                child: Stack(
-                  children: [
-                    GoogleMap(
-                      onMapCreated: (GoogleMapController controller) {
-                        _mapController = controller;
-                      },
-                      initialCameraPosition: CameraPosition(
-                          target: _selectedLocation ??
-                              const LatLng(
-                                  37.42796133580664, -122.085749655962),
-                          zoom: 15),
-                      markers: _selectedLocation == null
-                          ? Set.of([])
-                          : Set.of([
-                              Marker(
-                                markerId: const MarkerId('Your Location'),
-                                position: _selectedLocation!,
-                                draggable: true,
-                                onDragEnd: (LatLng position) {
-                                  _onMarkerDragEnd(position);
-                                },
-                              )
-                            ]),
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(horizontal: 10.w),
-                          color: Colors.white,
-                          child: TextField(
-                            controller: _searchController,
-                            onChanged: _onSearchChanged,
-                            decoration: InputDecoration(
-                                hintStyle:
-                                    appStyle(13, kGray, FontWeight.normal),
-                                hintText: 'Search for your address...'),
-                          ),
+      ),
+      body: SizedBox(
+        height: hieght,
+        width: width,
+        child: PageView(
+          controller: _pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            BackGroundContainer(
+              child: Stack(
+                children: [
+                  GoogleMap(
+                    onMapCreated: (GoogleMapController controller) {
+                      _mapController = controller;
+                    },
+                    initialCameraPosition: CameraPosition(
+                        target: _selectedLocation ??
+                            const LatLng(37.42796133580664, -122.085749655962),
+                        zoom: 15),
+                    markers: _selectedLocation == null
+                        ? Set.of([])
+                        : Set.of([
+                            Marker(
+                              markerId: const MarkerId('Your Location'),
+                              position: _selectedLocation!,
+                              draggable: true,
+                              onDragEnd: (LatLng position) {
+                                _onMarkerDragEnd(position);
+                              },
+                            )
+                          ]),
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 10.w),
+                        color: Colors.white,
+                        child: TextField(
+                          controller: _searchController,
+                          onChanged: _onSearchChanged,
+                          decoration: InputDecoration(
+                              hintStyle: appStyle(13, kGray, FontWeight.normal),
+                              hintText: 'Search for your address...'),
                         ),
-                        _placeList.isEmpty
-                            ? const SizedBox.shrink()
-                            : Expanded(
-                                child: ListView(
+                      ),
+                      _placeList.isEmpty
+                          ? const SizedBox.shrink()
+                          : Expanded(
+                              child: ListView(
                                 children: List.generate(_placeList.length, (i) {
                                   return Container(
                                     color: Colors.white,
@@ -259,182 +257,185 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
                                     ),
                                   );
                                 }),
-                              ))
+                              ),
+                            )
+                    ],
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: hieght,
+              child: BackGroundContainer(
+                child: ListView(
+                  padding: EdgeInsets.symmetric(horizontal: 12.w),
+                  children: [
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        //Image One
+                        GestureDetector(
+                          onTap: () {
+                            uploader.pickImage('logo');
+                          },
+                          child: Obx(
+                            () => Container(
+                              height: 120.h,
+                              width: width / 2.3,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.r),
+                                border: Border.all(color: kGrayLight),
+                              ),
+                              child: uploader.logoUrl == ''
+                                  ? Center(
+                                      child: ReusableText(
+                                          text: "Upload Logo",
+                                          style: appStyle(
+                                              16, kDark, FontWeight.w600)),
+                                    )
+                                  : ClipRRect(
+                                      borderRadius: BorderRadius.circular(10.r),
+                                      child: Image.network(
+                                        uploader.logoUrl,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                            ),
+                          ),
+                        ),
+
+                        //Image Two
+
+                        GestureDetector(
+                          onTap: () {
+                            uploader.pickImage('cover');
+                          },
+                          child: Obx(() => Container(
+                                height: 120.h,
+                                width: width / 2.3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                  border: Border.all(color: kGrayLight),
+                                ),
+                                child: uploader.coverUrl == ''
+                                    ? Center(
+                                        child: ReusableText(
+                                            text: "Upload Cover",
+                                            style: appStyle(
+                                                16, kDark, FontWeight.w600)),
+                                      )
+                                    : ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(10.r),
+                                        child: Image.network(
+                                          uploader.coverUrl,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                              )),
+                        ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    EmailTextField(
+                      prefixIcon: Icon(
+                        AntDesign.edit,
+                        size: 14.sp,
+                        color: kGray,
+                      ),
+                      controller: _title,
+                      hintText: 'Restaurant Title',
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    EmailTextField(
+                      prefixIcon: Icon(
+                        AntDesign.edit,
+                        size: 14.sp,
+                        color: kGray,
+                      ),
+                      controller: _time,
+                      hintText: 'Business Hrs (08:00 AM - 10:00 PM)',
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    EmailTextField(
+                      prefixIcon: Icon(
+                        AntDesign.edit,
+                        size: 14.sp,
+                        color: kGray,
+                      ),
+                      controller: _postalCode,
+                      hintText: 'Postal Code',
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    EmailTextField(
+                      prefixIcon: Icon(
+                        AntDesign.edit,
+                        size: 14.sp,
+                        color: kGray,
+                      ),
+                      controller: _searchController,
+                      hintText: 'Address',
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    CustomButton(
+                      text: "A D D   R E S T A U R A N T",
+                      btnHieght: 35.h,
+                      onTap: () {
+                        if (_time.text.isEmpty ||
+                            _title.text.isEmpty ||
+                            _postalCode.text.isEmpty ||
+                            _searchController.text.isEmpty ||
+                            uploader.logoUrl.isEmpty ||
+                            uploader.coverUrl.isEmpty) {
+                          Get.snackbar(
+                            colorText: kLightWhite,
+                            backgroundColor: kPrimary,
+                            "Error",
+                            "All fields are required",
+                          );
+                        } else {
+                          String owner = box.read("userId");
+
+                          RestaurantRequest model = RestaurantRequest(
+                              title: _title.text,
+                              time: _time.text,
+                              owner: owner,
+                              code: _postalCode.text,
+                              logoUrl: uploader.logoUrl,
+                              imageUrl: uploader.coverUrl,
+                              coords: Coords(
+                                  id: controller.generateId(),
+                                  latitude: _selectedLocation!.latitude,
+                                  longitude: _selectedLocation!.longitude,
+                                  address: _searchController.text,
+                                  title: _title.text));
+
+                          String data = restaurantRequestToJson(model);
+
+                          controller.restaurantRegistration(data);
+                        }
+                      },
                     )
                   ],
                 ),
               ),
-              SizedBox(
-                height: hieght,
-                child: BackGroundContainer(
-                  child: ListView(
-                    padding: EdgeInsets.symmetric(horizontal: 12.w),
-                    children: [
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          //Image One
-                          GestureDetector(
-                            onTap: () {
-                              uploader.pickImage('logo');
-                            },
-                            child: Obx(() => Container(
-                                  height: 120.h,
-                                  width: width / 2.3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.r),
-                                    border: Border.all(color: kGrayLight),
-                                  ),
-                                  child: uploader.logoUrl == ''
-                                      ? Center(
-                                          child: ReusableText(
-                                              text: "Upload Logo",
-                                              style: appStyle(
-                                                  16, kDark, FontWeight.w600)),
-                                        )
-                                      : ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(10.r),
-                                          child: Image.network(
-                                            uploader.logoUrl,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                )),
-                          ),
-
-                          //Image Two
-
-                          GestureDetector(
-                            onTap: () {
-                              uploader.pickImage('cover');
-                            },
-                            child: Obx(() => Container(
-                                  height: 120.h,
-                                  width: width / 2.3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.r),
-                                    border: Border.all(color: kGrayLight),
-                                  ),
-                                  child: uploader.coverUrl == ''
-                                      ? Center(
-                                          child: ReusableText(
-                                              text: "Upload Cover",
-                                              style: appStyle(
-                                                  16, kDark, FontWeight.w600)),
-                                        )
-                                      : ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(10.r),
-                                          child: Image.network(
-                                            uploader.coverUrl,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                )),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      EmailTextField(
-                        prefixIcon: Icon(
-                          AntDesign.edit,
-                          size: 14.sp,
-                          color: kGray,
-                        ),
-                        controller: _title,
-                        hintText: 'Restaurant Title',
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      EmailTextField(
-                        prefixIcon: Icon(
-                          AntDesign.edit,
-                          size: 14.sp,
-                          color: kGray,
-                        ),
-                        controller: _time,
-                        hintText: 'Business Hrs (08:00 AM - 10:00 PM)',
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      EmailTextField(
-                        prefixIcon: Icon(
-                          AntDesign.edit,
-                          size: 14.sp,
-                          color: kGray,
-                        ),
-                        controller: _postalCode,
-                        hintText: 'Postal Code',
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      EmailTextField(
-                        prefixIcon: Icon(
-                          AntDesign.edit,
-                          size: 14.sp,
-                          color: kGray,
-                        ),
-                        controller: _searchController,
-                        hintText: 'Address',
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      CustomButton(
-                        text: "A D D   R E S T A U R A N T",
-                        btnHieght: 35.h,
-                        onTap: () {
-                          if (_time.text.isEmpty ||
-                              _title.text.isEmpty ||
-                              _postalCode.text.isEmpty ||
-                              _searchController.text.isEmpty ||
-                              uploader.logoUrl.isEmpty ||
-                              uploader.coverUrl.isEmpty) {
-                            Get.snackbar(
-                              colorText: kLightWhite,
-                              backgroundColor: kPrimary,
-                              "Error",
-                              "All fields are required",
-                            );
-                          } else {
-                            String owner = box.read("userId");
-
-                            RestaurantRequest model = RestaurantRequest(
-                                title: _title.text,
-                                time: _time.text,
-                                owner: owner,
-                                code: _postalCode.text,
-                                logoUrl: uploader.logoUrl,
-                                imageUrl: uploader.coverUrl,
-                                coords: Coords(
-                                    id: controller.generateId(),
-                                    latitude: _selectedLocation!.latitude,
-                                    longitude: _selectedLocation!.longitude,
-                                    address: _searchController.text,
-                                    title: _title.text));
-
-                            String data = restaurantRequestToJson(model);
-
-                            controller.restaurantRegistration(data);
-                          }
-                        },
-                      )
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ));
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

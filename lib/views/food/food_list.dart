@@ -49,17 +49,18 @@ class FoodList extends HookWidget {
         ),
       ),
       body: BackGroundContainer(
-          child: Padding(
-        padding: EdgeInsets.only(top: 20.h),
-        child: ListView.builder(
-            itemCount: foods!.length,
-            itemBuilder: (context, i) {
-              final food = foods[i];
-              return FoodTile(
-                food: food,
-              );
-            }),
-      )),
+        child: Padding(
+          padding: EdgeInsets.only(top: 20.h),
+          child: ListView.builder(
+              itemCount: foods!.length,
+              itemBuilder: (context, i) {
+                final food = foods[i];
+                return FoodTile(
+                  food: food,
+                );
+              }),
+        ),
+      ),
     );
   }
 }

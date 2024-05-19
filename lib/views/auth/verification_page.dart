@@ -39,11 +39,13 @@ class _VerificationPageState extends State<VerificationPage> {
             height: 30.h,
           ),
           ReusableText(
-              text: "Verify Your Account",
-              style: appStyle(20, kPrimary, FontWeight.bold)),
+            text: "Verify Your Account",
+            style: appStyle(20, kPrimary, FontWeight.bold),
+          ),
           Text(
-              "Enter the code sent to your email, if you did not send recieve the code, click resend",
-              style: appStyle(10, kGrayLight, FontWeight.normal)),
+            "Enter the code sent to your email, if you did not send recieve the code, click resend",
+            style: appStyle(10, kGrayLight, FontWeight.normal),
+          ),
           SizedBox(
             height: 20.h,
           ),
@@ -75,9 +77,10 @@ class _VerificationPageState extends State<VerificationPage> {
             height: 30.h,
           ),
           Text(
-              "The email has been sent to ${user!.email}. If the email is not correct, please delete this account and create a new one with the correct email. Alternatively, you can logout and browser the app without an account.",
-              textAlign: TextAlign.justify,
-              style: appStyle(10, kGray, FontWeight.normal)),
+            "The email has been sent to ${user!.email}. If the email is not correct, please delete this account and create a new one with the correct email. Alternatively, you can logout and browser the app without an account.",
+            textAlign: TextAlign.justify,
+            style: appStyle(10, kGray, FontWeight.normal),
+          ),
           SizedBox(
             height: 15.h,
           ),
@@ -85,19 +88,22 @@ class _VerificationPageState extends State<VerificationPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                  onTap: () {
-                    userController.logout();
-                  },
-                  child: ReusableText(
-                      text: "Logout",
-                      style: appStyle(12, kSecondary, FontWeight.w600))),
+                onTap: () {
+                  userController.logout();
+                },
+                child: ReusableText(
+                  text: "Logout",
+                  style: appStyle(12, kSecondary, FontWeight.w600),
+                ),
+              ),
               GestureDetector(
                 onTap: () {
                   // userController.deleteAccount();
                 },
                 child: ReusableText(
-                    text: "Delete account",
-                    style: appStyle(12, kRed, FontWeight.w600)),
+                  text: "Delete account",
+                  style: appStyle(12, kRed, FontWeight.w600),
+                ),
               ),
             ],
           )
