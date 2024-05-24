@@ -40,10 +40,10 @@ class FoodInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ReusableText(
-                    text: "Add Details",
+                    text: "Thêm chi tiết",
                     style: appStyle(16, kGray, FontWeight.w600)),
                 ReusableText(
-                    text: "You are required to information correctly",
+                    text: "Bạn được yêu cầu thông tin một cách chính xác",
                     style: appStyle(11, kGray, FontWeight.normal)),
               ],
             ),
@@ -54,14 +54,14 @@ class FoodInfo extends StatelessWidget {
               children: [
                 CustomTextField(
                     controller: title,
-                    hintText: "Title",
+                    hintText: "Tiêu đề",
                     prefixIcon: const Icon(Icons.keyboard_capslock)),
                 SizedBox(
                   height: 15.h,
                 ),
                 CustomTextField(
                     controller: description,
-                    hintText: "Add food description",
+                    hintText: "Thêm mô tả thức uống",
                     keyboardType: TextInputType.multiline,
                     maxLines: 3,
                     prefixIcon: const Icon(Icons.keyboard_capslock)),
@@ -70,14 +70,14 @@ class FoodInfo extends StatelessWidget {
                 ),
                 CustomTextField(
                     controller: preparation,
-                    hintText: "Food preparation time e.g 10 min",
+                    hintText: "Thời gian chuẩn bị thức uống, ví dụ 10 phút",
                     prefixIcon: const Icon(Icons.keyboard_capslock)),
                 SizedBox(
                   height: 15.h,
                 ),
                 CustomTextField(
                     controller: price,
-                    hintText: "Price with no currency e.g 100",
+                    hintText: "Giá không có tiền tệ, ví dụ 100",
                     keyboardType: TextInputType.number,
                     prefixIcon: const Icon(Icons.money)),
                 SizedBox(
@@ -92,11 +92,11 @@ class FoodInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ReusableText(
-                    text: "Add Food Types",
+                    text: "Thêm các loại thức uống",
                     style: appStyle(16, kGray, FontWeight.w600)),
                 ReusableText(
                     text:
-                        "You are required to types and types helps with food search",
+                        "Bạn được yêu cầu loại và loại giúp tìm kiếm thức uống",
                     style: appStyle(11, kGray, FontWeight.normal)),
               ],
             ),
@@ -109,7 +109,7 @@ class FoodInfo extends StatelessWidget {
                     CustomTextField(
                         controller: types,
                         hintText:
-                            "Breakfast / Lunch / Dinner / Snacks / Drinks",
+                            "Bữa sáng / bữa trưa / bữa tối / đồ ăn nhẹ / đồ uống",
                         keyboardType: TextInputType.number,
                         prefixIcon: const Icon(Icons.money)),
                     SizedBox(
@@ -126,12 +126,13 @@ class FoodInfo extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8.r)),
                                 child: Center(
                                   child: Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 5.h),
-                                      child: ReusableText(
-                                          text: controller.types[i],
-                                          style: appStyle(9, kLightWhite,
-                                              FontWeight.normal))),
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 5.h),
+                                    child: ReusableText(
+                                        text: controller.types[i],
+                                        style: appStyle(
+                                            9, kLightWhite, FontWeight.normal)),
+                                  ),
                                 ),
                               );
                             }),
@@ -141,7 +142,7 @@ class FoodInfo extends StatelessWidget {
                       height: 15.h,
                     ),
                     CustomButton(
-                      text: "Add Food Types",
+                      text: "Thêm loại thực phẩm",
                       btnColor: kSecondary,
                       onTap: () {
                         controller.setTypes = types.text;
@@ -158,7 +159,7 @@ class FoodInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomButton(
-                  text: "Back",
+                  text: "Mặt sau",
                   btnWidth: width / 2.3,
                   btnRadius: 6,
                   onTap: () {
@@ -166,7 +167,7 @@ class FoodInfo extends StatelessWidget {
                   },
                 ),
                 CustomButton(
-                  text: "Next",
+                  text: "Kế tiếp",
                   btnWidth: width / 2.3,
                   btnRadius: 6,
                   onTap: () {

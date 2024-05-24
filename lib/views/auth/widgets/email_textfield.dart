@@ -32,7 +32,7 @@ class EmailTextField extends StatelessWidget {
       controller: controller,
       validator: (value) {
         if (value!.isEmpty) {
-          return "Please enter a valid value";
+          return "Vui lòng nhập giá trị hợp lệ";
         } else {
           return null;
         }

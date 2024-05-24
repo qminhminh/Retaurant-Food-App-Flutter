@@ -29,7 +29,7 @@ class RegistrationController extends GetxController {
         var data = successResponseFromJson(response.body);
 
         Get.snackbar(
-          'Success Procees to Login',
+          'Quá trình thành công để đăng nhập',
           data.message,
           backgroundColor: kPrimary,
           colorText: kLightWhite,
@@ -44,7 +44,7 @@ class RegistrationController extends GetxController {
       } else {
         var data = successResponseFromJson(response.body);
         Get.snackbar(
-          'Success',
+          'Thành công',
           data.message,
           backgroundColor: kPrimary,
           colorText: kLightWhite,
@@ -55,7 +55,7 @@ class RegistrationController extends GetxController {
       isLoading = false;
 
       Get.snackbar(
-        'Error',
+        'Lỗi',
         e.toString(),
         backgroundColor: kPrimary,
         colorText: kLightWhite,

@@ -43,11 +43,11 @@ class ChooseCategory extends HookWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ReusableText(
-                    text: "Pick Category",
+                    text: "Chọn danh mục",
                     style: appStyle(16, kGray, FontWeight.w600)),
                 ReusableText(
                     text:
-                        "You are to pick a category to continue adding a food item",
+                        "Bạn phải chọn một danh mục để tiếp tục thêm một mặt hàng thực phẩm",
                     style: appStyle(11, kGray, FontWeight.normal)),
               ],
             ),

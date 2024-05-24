@@ -49,7 +49,7 @@ class FoodTile extends StatelessWidget {
                         text: food.title,
                         style: appStyle(11, kDark, FontWeight.w500)),
                     ReusableText(
-                        text: "Delivery time:  ${food.time}",
+                        text: "Thời gian giao hàng:  ${food.time}",
                         style: appStyle(9, kGray, FontWeight.w500)),
                     SizedBox(
                       height: 16.h,
@@ -92,7 +92,7 @@ class FoodTile extends StatelessWidget {
                     color: kPrimary, borderRadius: BorderRadius.circular(12.r)),
                 child: Center(
                   child: ReusableText(
-                    text: "\$${food.price.toStringAsFixed(2)}",
+                    text: "VND ${food.price.toStringAsFixed(2)}",
                     style: appStyle(12, kLightWhite, FontWeight.bold),
                   ),
                 ),

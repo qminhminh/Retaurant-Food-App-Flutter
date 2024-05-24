@@ -61,7 +61,7 @@ class RestaurantController extends GetxController {
             colorText: kLightWhite,
             backgroundColor: kPrimary,
             data.message,
-            'Restaurant Registered Successfully continue to login to the service');
+            'Nhà hàng đã đăng ký thành công tiếp tục đăng nhập vào dịch vụ');
 
         Get.offAll(() => const Login(),
             transition: kTransition, duration: kDuration);
@@ -72,7 +72,7 @@ class RestaurantController extends GetxController {
             colorText: kLightWhite,
             backgroundColor: kPrimary,
             error.message,
-            'Failed to register restaurant please try again');
+            'Không đăng ký nhà hàng, vui lòng thử lại');
       }
       isLoading = false;
     } catch (e) {
@@ -82,7 +82,7 @@ class RestaurantController extends GetxController {
           colorText: kLightWhite,
           backgroundColor: kPrimary,
           e.toString(),
-          'Failed to register restaurant please try again');
+          'Không đăng ký nhà hàng, vui lòng thử lại');
     }
   }
 }

@@ -57,10 +57,11 @@ class _AddFoodsState extends State<AddFoods> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ReusableText(
-                text: "Welcome to Restaurant Panel",
+                text: "Chào mừng bạn đến với bảng điều khiển nhà hàng",
                 style: appStyle(14, kLightWhite, FontWeight.w600)),
             ReusableText(
-                text: "Fill all the required info to add food items",
+                text:
+                    "Điền vào tất cả các thông tin cần thiết để thêm các mặt hàng thucứ uống",
                 style: appStyle(12, kLightWhite, FontWeight.normal)),
           ],
         ),
@@ -132,8 +133,8 @@ class _AddFoodsState extends State<AddFoods> {
                         Get.snackbar(
                             colorText: kLightWhite,
                             backgroundColor: kPrimary,
-                            "You should fill all the fields",
-                            "All fields are required to upload food items to the app");
+                            "Bạn nên điền vào tất cả các trường",
+                            "Tất cả các lĩnh vực được yêu cầu để tải các mặt hàng thực phẩm lên ứng dụng");
                       } else {
                         AddFoodsModel foodItem = AddFoodsModel(
                             title: title.text,

@@ -49,8 +49,8 @@ class EmailVerificationController extends GetxController {
         box.write('e-verification', data.verification);
 
         Get.snackbar(
-          "Sucessfully verified your account",
-          "Enjoy your awesome experience",
+          "Đã xác minh thành công tài khoản của bạn",
+          "hãy tận hưởng trải nghiệm tuyệt vời của bạn",
           backgroundColor: kPrimary,
           colorText: kLightWhite,
         );
@@ -66,7 +66,7 @@ class EmailVerificationController extends GetxController {
       } else {
         var data = successResponseFromJson(response.body);
         Get.snackbar(
-          "Failed to verify account",
+          "Không xác minh tài khoản",
           data.message,
           backgroundColor: kPrimary,
           colorText: kLightWhite,
@@ -75,7 +75,7 @@ class EmailVerificationController extends GetxController {
       }
     } catch (e) {
       Get.snackbar(
-        "Failed to verify account",
+        "Không xác minh tài khoản",
         e.toString(),
         backgroundColor: kPrimary,
         colorText: kLightWhite,

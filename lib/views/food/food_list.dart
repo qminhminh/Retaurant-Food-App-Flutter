@@ -25,7 +25,7 @@ class FoodList extends HookWidget {
         appBar: AppBar(
           backgroundColor: kSecondary,
           title: ReusableText(
-            text: "Food List",
+            text: "Danh sách thức uống",
             style: appStyle(18, kLightWhite, FontWeight.w600),
           ),
         ),
@@ -44,7 +44,7 @@ class FoodList extends HookWidget {
       appBar: AppBar(
         backgroundColor: kSecondary,
         title: ReusableText(
-          text: "Food List",
+          text: "Danh sách thức uống",
           style: appStyle(18, kLightWhite, FontWeight.w600),
         ),
       ),

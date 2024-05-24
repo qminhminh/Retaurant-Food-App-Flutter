@@ -24,7 +24,7 @@ class WaitingPage extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(24.w, 200.h, 24.w, 0),
           child: ListView(
             children: [
-              Lottie.asset('assets/anime/delivery.json'),
+              Lottie.asset('assets/anime/empty.json'),
               ReusableText(
                 text: restaurantController.restaurant!.title,
                 style: appStyle(18, kPrimary, FontWeight.bold),
@@ -37,7 +37,7 @@ class WaitingPage extends StatelessWidget {
                 children: [
                   ReusableText(
                     text:
-                        "Status: ${restaurantController.restaurant!.verification}",
+                        "Trạng thái: ${restaurantController.restaurant!.verification}",
                     style: appStyle(14, kGray, FontWeight.bold),
                   ),
                   GestureDetector(
@@ -47,7 +47,7 @@ class WaitingPage extends StatelessWidget {
                       );
                     },
                     child: ReusableText(
-                      text: "Try Login",
+                      text: "Thử đăng nhập",
                       style: appStyle(14, kTertiary, FontWeight.bold),
                     ),
                   ),

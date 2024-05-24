@@ -26,11 +26,11 @@ class ImageUploads extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ReusableText(
-                    text: "Upload Images",
+                    text: "Đăng tải hình ảnh",
                     style: appStyle(16, kGray, FontWeight.w600)),
                 ReusableText(
                     text:
-                        "You are requried to upload at least 2 images to proceed",
+                        "Bạn được yêu cầu tải lên ít nhất 2 hình ảnh để tiến hành",
                     style: appStyle(11, kGray, FontWeight.normal)),
               ],
             ),
@@ -59,7 +59,7 @@ class ImageUploads extends StatelessWidget {
                               child: controller.imageOneUrl == ''
                                   ? Center(
                                       child: ReusableText(
-                                          text: "Upload Image",
+                                          text: "Tải lên hình ảnh",
                                           style: appStyle(
                                               16, kDark, FontWeight.w600)),
                                     )
@@ -90,7 +90,7 @@ class ImageUploads extends StatelessWidget {
                             child: controller.imageTwoUrl == ''
                                 ? Center(
                                     child: ReusableText(
-                                        text: "Upload Image",
+                                        text: "Tải lên hình ảnh",
                                         style: appStyle(
                                             16, kDark, FontWeight.w600)),
                                   )
@@ -127,7 +127,7 @@ class ImageUploads extends StatelessWidget {
                             child: controller.imageThreeUrl == ''
                                 ? Center(
                                     child: ReusableText(
-                                        text: "Upload Image",
+                                        text: "Tải lên hình ảnh",
                                         style: appStyle(
                                             16, kDark, FontWeight.w600)),
                                   )
@@ -156,7 +156,7 @@ class ImageUploads extends StatelessWidget {
                             child: controller.imageFourUrl == ''
                                 ? Center(
                                     child: ReusableText(
-                                        text: "Upload Image",
+                                        text: "Tải lên hình ảnh",
                                         style: appStyle(
                                             16, kDark, FontWeight.w600)),
                                   )
@@ -179,7 +179,7 @@ class ImageUploads extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomButton(
-                        text: "Back",
+                        text: "Mặt sau",
                         btnWidth: width / 2.3,
                         btnRadius: 9,
                         onTap: () {
@@ -187,7 +187,7 @@ class ImageUploads extends StatelessWidget {
                         },
                       ),
                       CustomButton(
-                        text: "Next",
+                        text: "Kế tiếp",
                         btnWidth: width / 2.3,
                         btnRadius: 9,
                         onTap: () {
@@ -198,8 +198,8 @@ class ImageUploads extends StatelessWidget {
                                 colorText: kLightWhite,
                                 backgroundColor: kPrimary,
                                 snackPosition: SnackPosition.TOP,
-                                "Upload required images",
-                                "Please upload at least 2 images");
+                                "Tải lên hình ảnh cần thiết",
+                                "Vui lòng tải lên ít nhất 2 hình ảnh");
                           }
                         },
                       ),

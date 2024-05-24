@@ -158,7 +158,7 @@ class AdditivesInfo extends StatelessWidget {
               children: [
                 CustomTextField(
                   controller: foodTags,
-                  hintText: "Add Food Tags",
+                  hintText: "Thêm thẻ thực phẩm",
                   prefixIcon: const Icon(Icons.keyboard_capslock),
                 ),
               ],
@@ -198,7 +198,7 @@ class AdditivesInfo extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: CustomButton(
-              text: "A D D   F O O D   T A G S",
+              text: "Thêm thẻ thức uống",
               btnRadius: 6,
               btnHieght: 35,
               btnColor: kSecondary,
@@ -217,7 +217,7 @@ class AdditivesInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomButton(
-                  text: "Back",
+                  text: "Mặt sau",
                   btnWidth: width / 2.3,
                   btnRadius: 6,
                   onTap: () {
@@ -225,7 +225,7 @@ class AdditivesInfo extends StatelessWidget {
                   },
                 ),
                 CustomButton(
-                  text: "Submit",
+                  text: "Nộp",
                   btnWidth: width / 2.3,
                   btnRadius: 6,
                   onTap: () {

@@ -30,7 +30,7 @@ class CustomTextField extends StatelessWidget {
       style: appStyle(12, kDark, FontWeight.normal),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Please enter some text';
+          return 'Vui lòng nhập một số văn bản';
         }
         return null;
       },

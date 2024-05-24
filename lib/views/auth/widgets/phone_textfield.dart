@@ -35,7 +35,7 @@ class PhoneTextField extends StatelessWidget {
         controller: controller,
         validator: (value) {
           if (value!.isEmpty) {
-            return "Please enter a valid value";
+            return "Vui lòng nhập giá trị hợp lệ";
           } else {
             return null;
           }
@@ -49,20 +49,25 @@ class PhoneTextField extends StatelessWidget {
           hintStyle: appStyle(14, kGray, FontWeight.normal),
           // contentPadding: EdgeInsets.only(left: 24),
           errorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent, width: 0.5),
-              borderRadius: BorderRadius.all(Radius.circular(12))),
+            borderSide: BorderSide(color: Colors.transparent, width: 0.5),
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
           focusedBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent, width: 0.5),
-              borderRadius: BorderRadius.all(Radius.circular(12))),
+            borderSide: BorderSide(color: Colors.transparent, width: 0.5),
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
           focusedErrorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent, width: 0.5),
-              borderRadius: BorderRadius.all(Radius.circular(12))),
+            borderSide: BorderSide(color: Colors.transparent, width: 0.5),
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
           disabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent, width: 0.5),
-              borderRadius: BorderRadius.all(Radius.circular(12))),
+            borderSide: BorderSide(color: Colors.transparent, width: 0.5),
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
           enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent, width: 0.5),
-              borderRadius: BorderRadius.all(Radius.circular(12))),
+            borderSide: BorderSide(color: Colors.transparent, width: 0.5),
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
           border: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent, width: 0.5),
             borderRadius: BorderRadius.all(

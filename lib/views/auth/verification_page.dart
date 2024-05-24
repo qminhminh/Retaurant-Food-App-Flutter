@@ -34,16 +34,16 @@ class _VerificationPageState extends State<VerificationPage> {
           SizedBox(
             height: 100.h,
           ),
-          Lottie.asset('assets/anime/delivery.json'),
+          Lottie.asset('assets/anime/empty.json'),
           SizedBox(
             height: 30.h,
           ),
           ReusableText(
-            text: "Verify Your Account",
+            text: "Xác thực tài khoản của bạn",
             style: appStyle(20, kPrimary, FontWeight.bold),
           ),
           Text(
-            "Enter the code sent to your email, if you did not send recieve the code, click resend",
+            "Nhập mã được gửi đến email của bạn, nếu bạn không gửi nhận mã, nhấp vào Resend",
             style: appStyle(10, kGrayLight, FontWeight.normal),
           ),
           SizedBox(
@@ -70,14 +70,14 @@ class _VerificationPageState extends State<VerificationPage> {
               controller.verifyEmail(controller.code);
             },
             btnColor: kPrimary,
-            text: "Verify Account",
+            text: "Xác nhận tài khoản",
             btnHieght: 40.h,
           ),
           SizedBox(
             height: 30.h,
           ),
           Text(
-            "The email has been sent to ${user!.email}. If the email is not correct, please delete this account and create a new one with the correct email. Alternatively, you can logout and browser the app without an account.",
+            "Email đã được gửi đến ${user!.email}. Nếu email không chính xác, vui lòng xóa tài khoản này và tạo một tài khoản mới với email chính xác.Ngoài ra, bạn có thể đăng xuất và trình duyệt ứng dụng mà không cần tài khoản.",
             textAlign: TextAlign.justify,
             style: appStyle(10, kGray, FontWeight.normal),
           ),
@@ -92,7 +92,7 @@ class _VerificationPageState extends State<VerificationPage> {
                   userController.logout();
                 },
                 child: ReusableText(
-                  text: "Logout",
+                  text: "Đăng xuất",
                   style: appStyle(12, kSecondary, FontWeight.w600),
                 ),
               ),
@@ -101,7 +101,7 @@ class _VerificationPageState extends State<VerificationPage> {
                   // userController.deleteAccount();
                 },
                 child: ReusableText(
-                  text: "Delete account",
+                  text: "Xóa tài khoản",
                   style: appStyle(12, kRed, FontWeight.w600),
                 ),
               ),

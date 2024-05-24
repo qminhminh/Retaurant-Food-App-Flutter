@@ -5,7 +5,9 @@ import 'package:restaurantfoodappflutter/common/app_style.dart';
 import 'package:restaurantfoodappflutter/common/reusable_text.dart';
 import 'package:restaurantfoodappflutter/constants/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:restaurantfoodappflutter/controllers/login_controller.dart';
 import 'package:restaurantfoodappflutter/controllers/restaurant_controller.dart';
+import 'package:restaurantfoodappflutter/views/auth/waiting_page.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -13,6 +15,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(RestaurantController());
+    final userController = Get.put(LoginController());
     controller.getRestuarantData();
     return Container(
       width: width,
@@ -24,10 +27,15 @@ class CustomAppBar extends StatelessWidget {
         children: [
           Row(
             children: [
-              CircleAvatar(
-                radius: 20.r,
-                backgroundColor: Colors.white,
-                backgroundImage: NetworkImage(controller.restaurant!.logoUrl),
+              InkWell(
+                onTap: () {
+                  userController.logout();
+                },
+                child: CircleAvatar(
+                  radius: 20.r,
+                  backgroundColor: Colors.white,
+                  backgroundImage: NetworkImage(controller.restaurant!.logoUrl),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(2.0),
@@ -50,10 +58,15 @@ class CustomAppBar extends StatelessWidget {
               ),
             ],
           ),
-          SvgPicture.asset(
-            'assets/icons/open_sign.svg',
-            height: 35.h,
-            width: 35.w,
+          InkWell(
+            onTap: () {
+              Get.to(() => const WaitingPage());
+            },
+            child: SvgPicture.asset(
+              'assets/icons/open_sign.svg',
+              height: 35.h,
+              width: 35.w,
+            ),
           )
         ],
       ),

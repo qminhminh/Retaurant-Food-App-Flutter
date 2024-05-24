@@ -58,7 +58,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
           height: 50.h,
           child: Center(
             child: Text(
-              "Foodly Restaurant Panel",
+              "Đồ uống",
               style: appStyle(24, kPrimary, FontWeight.bold),
             ),
           ),
@@ -70,7 +70,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
           SizedBox(
             height: 30.h,
           ),
-          Lottie.asset('assets/anime/delivery.json'),
+          Lottie.asset('assets/anime/empty.json'),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Form(
@@ -80,7 +80,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                   //email
                   EmailTextField(
                     focusNode: _passwordFocusNode,
-                    hintText: "Email",
+                    hintText: "E-mail",
                     controller: _emailController,
                     prefixIcon: Icon(
                       CupertinoIcons.mail,
@@ -114,7 +114,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                           onTap: () {
                             Get.to(() => const RegistrationPage());
                           },
-                          child: Text('Register',
+                          child: Text('Đăng ký',
                               style: appStyle(
                                   12, Colors.black, FontWeight.normal)),
                         ),
@@ -140,7 +140,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                         : CustomButton(
                             btnHieght: 37.h,
                             btnColor: kPrimary,
-                            text: "L O G I N",
+                            text: "ĐĂNG NHẬP",
                             onTap: () {
                               LoginRequest model = LoginRequest(
                                   email: _emailController.text,

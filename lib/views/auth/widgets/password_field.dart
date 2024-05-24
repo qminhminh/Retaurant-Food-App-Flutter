@@ -30,7 +30,7 @@ class PasswordField extends StatelessWidget {
           obscureText: passwordController.password,
           validator: (value) {
             if (value!.isEmpty) {
-              return "Please enter a valid password";
+              return "Vui lòng nhập mật khẩu hợp lệ";
             } else {
               return null;
             }
@@ -48,7 +48,7 @@ class PasswordField extends StatelessWidget {
                 color: kGrayLight,
               ),
             ),
-            hintText: 'Password ',
+            hintText: 'Mật khẩu ',
             prefixIcon: const Icon(
               CupertinoIcons.lock_circle,
               color: kGrayLight,
@@ -59,20 +59,25 @@ class PasswordField extends StatelessWidget {
             hintStyle: appStyle(12, kGray, FontWeight.normal),
             // contentPadding: EdgeInsets.only(left: 24),
             errorBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.red, width: 0.5),
-                borderRadius: BorderRadius.all(Radius.circular(12))),
+              borderSide: BorderSide(color: Colors.red, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+            ),
             focusedBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: kPrimary, width: 0.5),
-                borderRadius: BorderRadius.all(Radius.circular(12))),
+              borderSide: BorderSide(color: kPrimary, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+            ),
             focusedErrorBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: kRed, width: 0.5),
-                borderRadius: BorderRadius.all(Radius.circular(12))),
+              borderSide: BorderSide(color: kRed, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+            ),
             disabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: kGray, width: 0.5),
-                borderRadius: BorderRadius.all(Radius.circular(12))),
+              borderSide: BorderSide(color: kGray, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+            ),
             enabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: kGray, width: 0.5),
-                borderRadius: BorderRadius.all(Radius.circular(12))),
+              borderSide: BorderSide(color: kGray, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+            ),
             border: const OutlineInputBorder(
               borderSide: BorderSide(color: kPrimary, width: 0.5),
               borderRadius: BorderRadius.all(

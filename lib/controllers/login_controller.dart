@@ -150,7 +150,7 @@ class LoginController extends GetxController {
       } else {
         var data = apiErrorFromJson(response.body);
         Get.snackbar(
-          'Opps Failed',
+          'Opps thất bại',
           data.message,
           backgroundColor: kPrimary,
           colorText: kLightWhite,
@@ -161,7 +161,7 @@ class LoginController extends GetxController {
       isLoading = false;
 
       Get.snackbar(
-        'Login Failed',
+        'Đăng nhập thất bại',
         e.toString(),
         backgroundColor: kPrimary,
         colorText: kLightWhite,

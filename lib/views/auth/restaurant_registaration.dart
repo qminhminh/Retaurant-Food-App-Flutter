@@ -151,7 +151,7 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
         _postalCode.text = postalCode;
       });
     } else {
-      debugPrint("Error getting thhe details");
+      debugPrint("Lỗi khi nhận được chi tiết");
     }
   }
 
@@ -169,17 +169,17 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             MapBtn(
-                text: "Back",
+                text: "Mặt sau",
                 onTap: () {
                   _pageController.previousPage(
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeIn);
                 }),
             ReusableText(
-                text: "Register Restaurant",
+                text: "Đăng ký quán nước",
                 style: appStyle(13, kLightWhite, FontWeight.w600)),
             MapBtn(
-                text: "Next",
+                text: "Kế tiếp",
                 onTap: () {
                   _pageController.nextPage(
                       duration: const Duration(milliseconds: 500),
@@ -229,7 +229,7 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
                           onChanged: _onSearchChanged,
                           decoration: InputDecoration(
                               hintStyle: appStyle(13, kGray, FontWeight.normal),
-                              hintText: 'Search for your address...'),
+                              hintText: 'Tìm kiếm địa chỉ của bạn ...'),
                         ),
                       ),
                       _placeList.isEmpty
@@ -292,7 +292,7 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
                               child: uploader.logoUrl == ''
                                   ? Center(
                                       child: ReusableText(
-                                          text: "Upload Logo",
+                                          text: "Tải lên logo",
                                           style: appStyle(
                                               16, kDark, FontWeight.w600)),
                                     )
@@ -323,7 +323,7 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
                                 child: uploader.coverUrl == ''
                                     ? Center(
                                         child: ReusableText(
-                                            text: "Upload Cover",
+                                            text: "Tải lên bìa",
                                             style: appStyle(
                                                 16, kDark, FontWeight.w600)),
                                       )
@@ -349,7 +349,7 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
                         color: kGray,
                       ),
                       controller: _title,
-                      hintText: 'Restaurant Title',
+                      hintText: 'Tiêu đề quán',
                     ),
                     SizedBox(
                       height: 20.h,
@@ -361,7 +361,7 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
                         color: kGray,
                       ),
                       controller: _time,
-                      hintText: 'Business Hrs (08:00 AM - 10:00 PM)',
+                      hintText: 'Nhân sự kinh doanh (08:00 sáng - 10:00 tối)',
                     ),
                     SizedBox(
                       height: 20.h,
@@ -373,7 +373,7 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
                         color: kGray,
                       ),
                       controller: _postalCode,
-                      hintText: 'Postal Code',
+                      hintText: 'Mã bưu điện',
                     ),
                     SizedBox(
                       height: 20.h,
@@ -385,13 +385,13 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
                         color: kGray,
                       ),
                       controller: _searchController,
-                      hintText: 'Address',
+                      hintText: 'Địa chỉ',
                     ),
                     SizedBox(
                       height: 20.h,
                     ),
                     CustomButton(
-                      text: "A D D   R E S T A U R A N T",
+                      text: "Thêm quán nước",
                       btnHieght: 35.h,
                       onTap: () {
                         if (_time.text.isEmpty ||
@@ -403,8 +403,8 @@ class _RestaurantRegistrationState extends State<RestaurantRegistration> {
                           Get.snackbar(
                             colorText: kLightWhite,
                             backgroundColor: kPrimary,
-                            "Error",
-                            "All fields are required",
+                            "Lỗi",
+                            "Tất cả các trường được yêu cầu",
                           );
                         } else {
                           String owner = box.read("userId");

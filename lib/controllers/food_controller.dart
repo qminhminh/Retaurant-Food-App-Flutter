@@ -83,7 +83,7 @@ class FoodController extends GetxController {
         Get.snackbar(
             colorText: kLightWhite,
             backgroundColor: kPrimary,
-            'Success',
+            'Thành công',
             data.message);
         Get.to(() => const HomePage(),
             transition: kTransition, duration: kDuration);
@@ -93,7 +93,7 @@ class FoodController extends GetxController {
         Get.snackbar(
             colorText: kLightWhite,
             backgroundColor: kPrimary,
-            'Failed to upload',
+            'Không tải lên',
             data.message);
       }
     } catch (e) {
@@ -102,7 +102,7 @@ class FoodController extends GetxController {
       Get.snackbar(
           colorText: kLightWhite,
           backgroundColor: kPrimary,
-          'Failed to upload',
+          'Không tải lên',
           data.message);
     }
   }

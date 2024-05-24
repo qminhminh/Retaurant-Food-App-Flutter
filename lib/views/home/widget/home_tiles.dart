@@ -33,24 +33,28 @@ class HomeTiles extends StatelessWidget {
                       transition: Transition.fadeIn,
                       duration: const Duration(milliseconds: 900));
                 },
-                text: "Add Foods",
-                iconPath: "assets/icons/taco.svg"),
+                text: "Thêm thức uống",
+                iconPath:
+                    "https://res.cloudinary.com/dijk9w0jo/image/upload/v1716525939/qbfknadzzra5ohcnfrag.png"),
             HomeTile(
                 onTap: () {},
-                text: "Wallet",
-                iconPath: "assets/icons/wallet.svg"),
+                text: "Cái ví",
+                iconPath:
+                    "https://res.cloudinary.com/dp2bicmif/image/upload/v1716562680/budwmewmpmjtmwpc2ztq.jpg"),
             HomeTile(
                 onTap: () {
                   Get.to(() => const FoodList(),
                       transition: Transition.fadeIn,
                       duration: const Duration(milliseconds: 900));
                 },
-                text: "Foods",
-                iconPath: "assets/icons/french_fries.svg"),
+                text: "Thức uống",
+                iconPath:
+                    "https://res.cloudinary.com/dp2bicmif/image/upload/v1716562883/erravrutwyyorsi588ej.png"),
             HomeTile(
                 onTap: () {},
-                text: "Self Deliveries",
-                iconPath: "assets/icons/deliver_food.svg"),
+                text: "Tự giao hàng",
+                iconPath:
+                    "https://res.cloudinary.com/dp2bicmif/image/upload/v1716562738/i5jddvt8jfxermi9fkzv.png"),
           ],
         ),
       ),

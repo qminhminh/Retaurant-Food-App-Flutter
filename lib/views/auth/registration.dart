@@ -60,7 +60,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
           height: 50.h,
           child: Center(
             child: Text(
-              "Foodly Family",
+              "Đồ uống",
               style: appStyle(24, kPrimary, FontWeight.bold),
             ),
           ),
@@ -72,7 +72,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
           SizedBox(
             height: 30.h,
           ),
-          Lottie.asset('assets/anime/delivery.json'),
+          Lottie.asset('assets/anime/empty.json'),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Form(
@@ -82,7 +82,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   //email
                   EmailTextField(
                     focusNode: _passwordFocusNode,
-                    hintText: "Username",
+                    hintText: "Tên tài khoản",
                     controller: _usernameController,
                     prefixIcon: Icon(
                       CupertinoIcons.person,
@@ -100,7 +100,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
                   EmailTextField(
                     focusNode: _passwordFocusNode,
-                    hintText: "Email",
+                    hintText: "E-mail",
                     controller: _emailController,
                     prefixIcon: Icon(
                       CupertinoIcons.mail,
@@ -140,7 +140,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         : CustomButton(
                             btnHieght: 37.h,
                             btnColor: kPrimary,
-                            text: "R E G I S T E R",
+                            text: "ĐĂNG KÝ",
                             onTap: () {
                               Registration model = Registration(
                                   username: _usernameController.text,

@@ -88,7 +88,7 @@ class OrderTile extends StatelessWidget {
                         text: order.orderItems[0].foodId.title,
                         style: appStyle(10, kGray, FontWeight.w500),
                       ),
-                      OrderRowText(text: "🍲 Order : ${order.id}"),
+                      OrderRowText(text: "🍲 Đặt hàng : ${order.id}"),
                       OrderRowText(
                           text: "🏠 ${order.deliveryAddress.addressLine1}"),
                       Row(
@@ -102,7 +102,7 @@ class OrderTile extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: ReusableText(
-                              text: "\$ ${order.deliveryFee}",
+                              text: "vnd ${order.deliveryFee}",
                               style: appStyle(9, kGray, FontWeight.w400),
                             ),
                           ),
@@ -114,7 +114,7 @@ class OrderTile extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: ReusableText(
-                              text: "⏰ 25 min",
+                              text: "⏰ 25 Tối thiểu",
                               style: appStyle(9, kGray, FontWeight.w400),
                             ),
                           ),
