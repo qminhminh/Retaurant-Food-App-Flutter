@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -49,28 +51,30 @@ class ImageUploads extends StatelessWidget {
                         onTap: () {
                           controller.pickImage('one');
                         },
-                        child: Obx(() => Container(
-                              height: 120.h,
-                              width: width / 2.3,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10.r),
-                                border: Border.all(color: kGrayLight),
-                              ),
-                              child: controller.imageOneUrl == ''
-                                  ? Center(
-                                      child: ReusableText(
-                                          text: "Tải lên hình ảnh",
-                                          style: appStyle(
-                                              16, kDark, FontWeight.w600)),
-                                    )
-                                  : ClipRRect(
-                                      borderRadius: BorderRadius.circular(10.r),
-                                      child: Image.network(
-                                        controller.imageOneUrl,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                            )),
+                        child: Obx(
+                          () => Container(
+                            height: 120.h,
+                            width: width / 2.3,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.r),
+                              border: Border.all(color: kGrayLight),
+                            ),
+                            child: controller.imageOne.value == null
+                                ? Center(
+                                    child: ReusableText(
+                                        text: "Tải lên hình ảnh",
+                                        style: appStyle(
+                                            16, kDark, FontWeight.w600)),
+                                  )
+                                : ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: controller.imageOne.value != null
+                                        ? Image.file(controller.imageOne.value!,
+                                            fit: BoxFit.cover)
+                                        : Container(), // Replace this with a placeholder widget if you want
+                                  ),
+                          ),
+                        ),
                       ),
 
                       //Image Two
@@ -87,7 +91,7 @@ class ImageUploads extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10.r),
                               border: Border.all(color: kGrayLight),
                             ),
-                            child: controller.imageTwoUrl == ''
+                            child: controller.imageTwo.value == null
                                 ? Center(
                                     child: ReusableText(
                                         text: "Tải lên hình ảnh",
@@ -95,11 +99,11 @@ class ImageUploads extends StatelessWidget {
                                             16, kDark, FontWeight.w600)),
                                   )
                                 : ClipRRect(
-                                    borderRadius: BorderRadius.circular(10.r),
-                                    child: Image.network(
-                                      controller.imageTwoUrl,
-                                      fit: BoxFit.cover,
-                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: controller.imageTwo.value != null
+                                        ? Image.file(controller.imageTwo.value!,
+                                            fit: BoxFit.cover)
+                                        : Container(), // Replace this with a placeholder widget if you want
                                   ),
                           ),
                         ),
@@ -124,7 +128,7 @@ class ImageUploads extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10.r),
                               border: Border.all(color: kGrayLight),
                             ),
-                            child: controller.imageThreeUrl == ''
+                            child: controller.imageThree.value == null
                                 ? Center(
                                     child: ReusableText(
                                         text: "Tải lên hình ảnh",
@@ -132,11 +136,12 @@ class ImageUploads extends StatelessWidget {
                                             16, kDark, FontWeight.w600)),
                                   )
                                 : ClipRRect(
-                                    borderRadius: BorderRadius.circular(10.r),
-                                    child: Image.network(
-                                      controller.imageThreeUrl,
-                                      fit: BoxFit.cover,
-                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: controller.imageThree.value != null
+                                        ? Image.file(
+                                            controller.imageThree.value!,
+                                            fit: BoxFit.cover)
+                                        : Container(), // Replace this with a placeholder widget if you want
                                   ),
                           ),
                         ),
@@ -153,7 +158,7 @@ class ImageUploads extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10.r),
                               border: Border.all(color: kGrayLight),
                             ),
-                            child: controller.imageFourUrl == ''
+                            child: controller.imageFour.value == null
                                 ? Center(
                                     child: ReusableText(
                                         text: "Tải lên hình ảnh",
@@ -161,11 +166,12 @@ class ImageUploads extends StatelessWidget {
                                             16, kDark, FontWeight.w600)),
                                   )
                                 : ClipRRect(
-                                    borderRadius: BorderRadius.circular(10.r),
-                                    child: Image.network(
-                                      controller.imageFourUrl,
-                                      fit: BoxFit.cover,
-                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: controller.imageFour.value != null
+                                        ? Image.file(
+                                            controller.imageFour.value!,
+                                            fit: BoxFit.cover)
+                                        : Container(), // Replace this with a placeholder widget if you want
                                   ),
                           ),
                         ),
@@ -191,7 +197,25 @@ class ImageUploads extends StatelessWidget {
                         btnWidth: width / 2.3,
                         btnRadius: 9,
                         onTap: () {
-                          if (controller.images.length > 1) {
+                          if (controller.imageslist.length > 1) {
+                            List<String> imageNames = [
+                              'one',
+                              'two',
+                              'three',
+                              'four'
+                            ];
+                            List<dynamic> images = [
+                              controller.imageOne,
+                              controller.imageTwo,
+                              controller.imageThree,
+                              controller.imageFour
+                            ];
+
+                            for (int i = 0; i < imageNames.length; i++) {
+                              if (images[i] != null) {
+                                controller.uploadImageToFirebase(imageNames[i]);
+                              }
+                            }
                             next();
                           } else {
                             Get.snackbar(

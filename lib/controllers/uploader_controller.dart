@@ -6,6 +6,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:image/image.dart' as img;
+import 'package:path_provider/path_provider.dart';
 
 class UploaderController extends GetxController {
   final ImagePicker _picker = ImagePicker();
@@ -27,6 +29,18 @@ class UploaderController extends GetxController {
 
   void resetList() {
     _images.clear();
+  }
+
+  RxList<String> _imageslist = <String>[].obs;
+
+  List<String> get imageslist => _imageslist;
+
+  set setImagesList(String newValue) {
+    _imageslist.add(newValue);
+  }
+
+  void resetListImages() {
+    _imageslist.clear();
   }
 
   RxString _imageOneUrl = ''.obs;
@@ -81,21 +95,27 @@ class UploaderController extends GetxController {
     final pickedImage = await _picker.pickImage(source: ImageSource.gallery);
 
     if (pickedImage != null) {
+      final file = File(pickedImage.path);
+      final compressedFile = await compressImage(file);
       if (type == 'one') {
-        imageOne.value = File(pickedImage.path);
-        uploadImageToFirebase('one');
+        imageOne.value = compressedFile;
+        imageslist.add("one");
+        // uploadImageToFirebase('one');
         return;
       } else if (type == 'two') {
-        imageTwo.value = File(pickedImage.path);
-        uploadImageToFirebase('two');
+        imageTwo.value = compressedFile;
+        imageslist.add("two");
+        // uploadImageToFirebase('two');
         return;
       } else if (type == 'three') {
-        imageThree.value = File(pickedImage.path);
-        uploadImageToFirebase('three');
+        imageThree.value = compressedFile;
+        imageslist.add("three");
+        // uploadImageToFirebase('three');
         return;
       } else if (type == 'four') {
-        imageFour.value = File(pickedImage.path);
-        uploadImageToFirebase('four');
+        imageFour.value = compressedFile;
+        imageslist.add("four");
+        // uploadImageToFirebase('four');
         return;
       } else if (type == 'logo') {
         logo.value = File(pickedImage.path);
@@ -107,6 +127,18 @@ class UploaderController extends GetxController {
         return;
       }
     }
+  }
+
+  Future<File> compressImage(File file) async {
+    final bytes = await file.readAsBytes();
+    final image = img.decodeImage(bytes);
+    final compressedImage = img.encodeJpg(image!, quality: 25);
+
+    final tempDir = await getTemporaryDirectory();
+    final tempFile =
+        File('${tempDir.path}/${DateTime.now().millisecondsSinceEpoch}.jpg');
+
+    return tempFile.writeAsBytes(compressedImage);
   }
 
   Future<void> uploadImageToFirebase(String type) async {

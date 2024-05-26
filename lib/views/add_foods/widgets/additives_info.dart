@@ -37,12 +37,12 @@ class AdditivesInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ReusableText(
-                  text: "Add Addittives Info",
+                  text: "Thêm thông tin phụ gia",
                   style: appStyle(16, kGray, FontWeight.w600),
                 ),
                 ReusableText(
                   text:
-                      "You are required add addittives info for your product if it has any",
+                      "Bạn được yêu cầu thêm thông tin bổ sung cho sản phẩm của bạn nếu nó có bất kỳ",
                   style: appStyle(11, kGray, FontWeight.normal),
                 ),
               ],
@@ -59,14 +59,14 @@ class AdditivesInfo extends StatelessWidget {
                   ),
                   CustomTextField(
                       controller: additiveTitle,
-                      hintText: "Addittives Title",
+                      hintText: "Tiêu đề phụ gia",
                       prefixIcon: const Icon(Icons.keyboard_capslock)),
                   SizedBox(
                     height: 15.h,
                   ),
                   CustomTextField(
                       controller: additivePrice,
-                      hintText: "Addittives Price",
+                      hintText: "Giá phụ gia",
                       prefixIcon: const Icon(Icons.keyboard_capslock)),
                   SizedBox(
                     height: 15.h,
@@ -96,7 +96,7 @@ class AdditivesInfo extends StatelessWidget {
                                                 11, kDark, FontWeight.normal)),
                                         ReusableText(
                                             text:
-                                                "\$ ${additive.price.toString()}",
+                                                "${additive.price.toString()} vnd",
                                             style: appStyle(
                                                 11, kDark, FontWeight.normal)),
                                       ],
@@ -107,7 +107,7 @@ class AdditivesInfo extends StatelessWidget {
                         : const SizedBox.shrink(),
                   ),
                   CustomButton(
-                      text: "A D D   A D D I T T I V E S",
+                      text: "Thêm phụ gia phụ gia",
                       btnWidth: width,
                       btnColor: kSecondary,
                       btnHieght: 35,
@@ -127,8 +127,8 @@ class AdditivesInfo extends StatelessWidget {
                           Get.snackbar(
                               colorText: kLightWhite,
                               backgroundColor: kPrimary,
-                              "You need data to add additives",
-                              "Please fill all fields");
+                              "Bạn cần dữ liệu để thêm các chất phụ gia",
+                              "Vui lòng điền vào tất cả các trường");
                         }
                       }),
                 ],
@@ -141,12 +141,12 @@ class AdditivesInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ReusableText(
-                  text: "Add Food Tags",
+                  text: "Thêm thẻ thực phẩm",
                   style: appStyle(16, kGray, FontWeight.w600),
                 ),
                 ReusableText(
                   text:
-                      "You are required add food tags for your product if it has any",
+                      "Bạn được yêu cầu thêm thẻ thực phẩm cho sản phẩm của bạn nếu nó có bất kỳ",
                   style: appStyle(11, kGray, FontWeight.normal),
                 ),
               ],
