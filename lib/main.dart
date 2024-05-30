@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:network_info_plus/network_info_plus.dart';
+import 'package:restaurantfoodappflutter/constants/ipv4_controller.dart';
 import 'package:restaurantfoodappflutter/firebase_options.dart';
 import 'package:restaurantfoodappflutter/views/auth/login_page.dart';
 import 'package:restaurantfoodappflutter/views/auth/verification_page.dart';
@@ -12,14 +14,23 @@ import 'package:restaurantfoodappflutter/views/auth/waiting_page.dart';
 import 'package:restaurantfoodappflutter/views/home/home_page.dart';
 
 Widget defaultHome = const Login();
+final Ipv4Controller controller = Get.put(Ipv4Controller());
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await GetStorage.init();
+  __getGatewayIP();
 
   runApp(const MyApp());
+}
+
+void __getGatewayIP() async {
+  final info = NetworkInfo();
+  String? gatewayIP = await info.getWifiGatewayIP();
+  final controller = Get.put(Ipv4Controller());
+  controller.updateIpv4Value = gatewayIP ?? 'Không thể lấy địa chỉ IP';
 }
 
 class MyApp extends StatelessWidget {

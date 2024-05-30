@@ -3,9 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:restaurantfoodappflutter/constants/ipv4_controller.dart';
 
 String googleApiKey = 'AIzaSyDuDxriw8CH8NbVLiXtKFQ2Nb64AoRSdyg';
-
+final controller = Get.find<Ipv4Controller>();
 const kPrimary = Color.fromARGB(255, 240, 185, 96);
 const kPrimaryLight = Color(0xFF40F3EA);
 const kSecondary = Color.fromARGB(255, 163, 83, 7);
@@ -22,7 +23,7 @@ const kOffWhite = Color(0xffF3F4F8);
 double hieght = 926.h;
 double width = 428.w;
 
-const String appBaseUrl = "http://192.168.1.9:3000";
+String appBaseUrl = "http://${controller.ipv4Value}:3000";
 
 List<String> orderList = [
   "Đơn hàng mới",
