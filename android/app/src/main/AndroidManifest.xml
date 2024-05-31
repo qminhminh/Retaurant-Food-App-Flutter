@@ -10,9 +10,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
-        android:label="Restaurant Food"
+        android:label="Quán nước"
         android:name="${applicationName}"
-        android:icon="@mipmap/logo">
+        android:icon="@mipmap/logo1">
         <activity
             android:name=".MainActivity"
             android:exported="true"
